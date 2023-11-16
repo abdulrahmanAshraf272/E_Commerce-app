@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/constant/app_colors.dart';
 import 'package:ecommerce_app/core/localization/change_locale.dart';
+import 'package:ecommerce_app/core/localization/translation.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/routes.dart';
 import 'package:ecommerce_app/view/screen/language.dart';
@@ -22,18 +23,24 @@ class MyApp extends StatelessWidget {
     LocaleController controller = Get.put(LocaleController());
     return GetMaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       locale: controller.language,
+      translations: MyTranslation(),
       theme: ThemeData(
-          textTheme: const TextTheme(
-              displayLarge: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: AppColor.black),
-              bodyLarge: TextStyle(height: 2, color: AppColor.grey)),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          textTheme: customTextTheme(),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           primarySwatch: Colors.blue),
       routes: routes,
       home: const Language(),
     );
+  }
+
+  TextTheme customTextTheme() {
+    return const TextTheme(
+        displayLarge: TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 26, color: AppColor.black),
+        displayMedium: TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 24, color: AppColor.black),
+        bodyLarge: TextStyle(height: 2, color: AppColor.grey));
   }
 }

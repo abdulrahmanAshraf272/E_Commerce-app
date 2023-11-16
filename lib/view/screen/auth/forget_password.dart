@@ -1,35 +1,24 @@
-import 'package:ecommerce_app/controller/auth/login_controller.dart';
+import 'package:ecommerce_app/controller/auth/forget_password_controller.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
-import 'package:ecommerce_app/core/constant/image_assets.dart';
-import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_button_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_body_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_textform_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_title_auth.dart';
-import 'package:ecommerce_app/view/widget/auth/forget_pass_button.dart';
-import 'package:ecommerce_app/view/widget/auth/go_to_signup_button.dart';
-import 'package:ecommerce_app/view/widget/auth/logo_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class ForgetPassword extends StatelessWidget {
+  const ForgetPassword({super.key});
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginControllerImp());
+    final controller = Get.put(ForgetPasswordControllerImp());
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: AppColor.primaryColor,
           elevation: 0,
-          title: Text('Sign In',
+          title: Text('Forget Password',
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
@@ -38,8 +27,7 @@ class _LoginState extends State<Login> {
         padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
         child: ListView(
           children: [
-            const LogoAuth(),
-            const CustomTitleAuth(txt: 'Welcome Back'),
+            const CustomTitleAuth(txt: 'Check Email'),
             const SizedBox(height: 10),
             const CustomTextBodyAuth(
                 txt:
@@ -49,22 +37,10 @@ class _LoginState extends State<Login> {
               hintText: 'Enter Your Email',
               labelText: 'Email',
               iconData: Icons.email_outlined,
-              textEditingController: controller.emailController,
+              textEditingController: controller.email,
             ),
-            CustomTextFormAuth(
-              hintText: 'Enter Your Password',
-              labelText: 'Password',
-              iconData: Icons.lock_outline,
-              textEditingController: controller.passwordController,
-            ),
-            ForgetPassButton(
-              onPress: () => controller.goToForgetPassword(),
-            ),
-            CustomButtonAuth(textButton: 'Sign In', onPressed: () {}),
+            CustomButtonAuth(textButton: 'Sign Up', onPressed: () {}),
             const SizedBox(height: 20),
-            GoToSignUpButton(
-              onPress: () => controller.goToSignUp(),
-            )
           ],
         ),
       ),

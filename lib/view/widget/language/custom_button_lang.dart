@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class CustomButtonLang extends StatelessWidget {
   final String textButton;
-  final void Function()? onPressed;
-  const CustomButtonLang({super.key, required this.textButton, this.onPressed});
+  final void Function() onPressed;
+  const CustomButtonLang(
+      {super.key, required this.textButton, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
