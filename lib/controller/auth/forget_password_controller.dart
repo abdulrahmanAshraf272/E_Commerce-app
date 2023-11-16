@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 abstract class ForgetPasswordController extends GetxController {
   checkEmail();
-  goToVerfiyCode();
+  goToVerfiyCodeScreen();
 }
 
 class ForgetPasswordControllerImp extends ForgetPasswordController {
@@ -13,7 +13,7 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
   @override
   checkEmail() {}
   @override
-  goToVerfiyCode() {
+  goToVerfiyCodeScreen() {
     Get.offNamed(AppRoute.verifyCode);
   }
 

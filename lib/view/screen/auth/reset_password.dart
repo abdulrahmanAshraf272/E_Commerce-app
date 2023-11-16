@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/controller/auth/forget_password_controller.dart';
+import 'package:ecommerce_app/controller/auth/reset_password_controller.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_button_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_body_auth.dart';
@@ -12,13 +12,13 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(ForgetPasswordControllerImp());
+    final controller = Get.put(ResetPasswordControllerImp());
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: AppColor.primaryColor,
           elevation: 0,
-          title: Text('Forget Password',
+          title: Text('Reset Password',
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
@@ -27,19 +27,25 @@ class ResetPassword extends StatelessWidget {
         padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
         child: ListView(
           children: [
-            const CustomTitleAuth(txt: 'Check Email'),
+            const SizedBox(height: 20),
+            const CustomTitleAuth(txt: 'New Password'),
             const SizedBox(height: 10),
-            const CustomTextBodyAuth(
-                txt:
-                    'Sign in with your email and password or continue with social media.'),
+            const CustomTextBodyAuth(txt: 'Please Enter Your New Password.'),
             SizedBox(height: Get.height * 0.1),
-            // CustomTextFormAuth(
-            //   hintText: 'Enter Your Email',
-            //   labelText: 'Email',
-            //   iconData: Icons.email_outlined,
-            //   textEditingController: controller.email,
-            // ),
-            CustomButtonAuth(textButton: 'Sign Up', onPressed: () {}),
+            CustomTextFormAuth(
+              hintText: 'Enter Your Password',
+              labelText: 'Password',
+              iconData: Icons.lock_outline,
+              textEditingController: controller.password,
+            ),
+            const SizedBox(height: 20),
+            CustomTextFormAuth(
+              hintText: 'Re Enter Your Password',
+              labelText: 'Password again',
+              iconData: Icons.lock_outline,
+              textEditingController: controller.checkMatchPassword,
+            ),
+            CustomButtonAuth(textButton: 'Save', onPressed: () {}),
             const SizedBox(height: 20),
           ],
         ),

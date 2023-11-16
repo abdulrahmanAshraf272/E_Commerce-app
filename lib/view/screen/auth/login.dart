@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
             CustomButtonAuth(textButton: 'Sign In', onPressed: () {}),
             const SizedBox(height: 20),
             GoToSignUpButton(
-              onPress: () => controller.goToSignUp(),
+              onPress: () => controller.goToSignUpScreen(),
             )
           ],
         ),

@@ -65,7 +65,7 @@ class SignUp extends StatelessWidget {
                 }),
             const SizedBox(height: 20),
             GoToSignInButton(onPress: () {
-              controller.goToSignIn();
+              controller.goToSignInScreen();
             })
           ],
         ),
