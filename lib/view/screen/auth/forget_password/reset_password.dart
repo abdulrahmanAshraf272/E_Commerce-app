@@ -45,7 +45,11 @@ class ResetPassword extends StatelessWidget {
               iconData: Icons.lock_outline,
               textEditingController: controller.checkMatchPassword,
             ),
-            CustomButtonAuth(textButton: 'Save', onPressed: () {}),
+            CustomButtonAuth(
+                textButton: 'Save',
+                onPressed: () {
+                  controller.goToSuccessResetPassword();
+                }),
             const SizedBox(height: 20),
           ],
         ),

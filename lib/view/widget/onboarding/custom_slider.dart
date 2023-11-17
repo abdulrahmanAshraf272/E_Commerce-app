@@ -18,7 +18,10 @@ class CustomSlider extends GetView<OnBoardingControllerImp> {
       itemBuilder: (context, index) => Column(
         children: [
           Text(onBoardingList[index].title,
-              style: Theme.of(context).textTheme.displayMedium),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: AppColor.black)),
           SizedBox(
             height: Get.height * 0.1,
           ),
@@ -36,7 +39,7 @@ class CustomSlider extends GetView<OnBoardingControllerImp> {
               alignment: Alignment.center,
               child: Text(onBoardingList[index].body,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyLarge)),
+                  style: TextStyle(height: 2, color: AppColor.grey))),
         ],
       ),
     );

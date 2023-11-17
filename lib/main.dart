@@ -27,10 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: controller.language,
       translations: MyTranslation(),
-      theme: ThemeData(
-          textTheme: customTextTheme(),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          primarySwatch: Colors.blue),
+      theme: controller.appTheme,
       routes: routes,
       home: const Language(),
     );
