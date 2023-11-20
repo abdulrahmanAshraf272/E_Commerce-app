@@ -15,6 +15,7 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
   @override
   goToSuccessSignUp() {
     Get.offNamed(AppRoute.successSignUp);
+    //Get.delete<VerifyCodeSignUpControllerImp>();
   }
 
   @override

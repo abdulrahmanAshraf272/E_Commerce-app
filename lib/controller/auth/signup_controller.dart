@@ -8,13 +8,22 @@ abstract class SignUpController extends GetxController {
 }
 
 class SignUpControllerImp extends SignUpController {
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+
   late TextEditingController email;
   late TextEditingController password;
   late TextEditingController phone;
   late TextEditingController username;
   @override
   signup() {
-    Get.offNamed(AppRoute.checkEmail);
+    var formdata = formstate.currentState;
+    if (formdata!.validate()) {
+      Get.offNamed(AppRoute.verifyCodeSignUp);
+      //Get.delete<SignUpControllerImp>();
+      print('Valid');
+    } else {
+      print('Not Valid');
+    }
   }
 
   @override
@@ -38,5 +47,6 @@ class SignUpControllerImp extends SignUpController {
     password.dispose();
     phone.dispose();
     username.dispose();
+    print('signup controller dispose');
   }
 }

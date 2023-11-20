@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/controller/auth/reset_password_controller.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
+import 'package:ecommerce_app/core/functions/valid_input.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_button_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_body_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_textform_auth.dart';
@@ -35,6 +36,9 @@ class ResetPassword extends StatelessWidget {
             CustomTextFormAuth(
               hintText: 'Enter Your Password',
               labelText: 'Password',
+              valid: (val) {
+                return validInput(val!, 5, 100, 'password');
+              },
               iconData: Icons.lock_outline,
               textEditingController: controller.password,
             ),
@@ -42,6 +46,9 @@ class ResetPassword extends StatelessWidget {
             CustomTextFormAuth(
               hintText: 'Re Enter Your Password',
               labelText: 'Password again',
+              valid: (val) {
+                return validInput(val!, 5, 100, 'password');
+              },
               iconData: Icons.lock_outline,
               textEditingController: controller.checkMatchPassword,
             ),

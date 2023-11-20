@@ -28,8 +28,7 @@ class MyApp extends StatelessWidget {
       locale: controller.language,
       translations: MyTranslation(),
       theme: controller.appTheme,
-      routes: routes,
-      home: const Language(),
+      getPages: routes,
     );
   }
 

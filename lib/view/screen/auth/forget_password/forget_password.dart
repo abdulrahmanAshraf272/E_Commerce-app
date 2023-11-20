@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/controller/auth/forget_password_controller.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
+import 'package:ecommerce_app/core/functions/valid_input.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_button_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_body_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_textform_auth.dart';
@@ -36,6 +37,9 @@ class ForgetPassword extends StatelessWidget {
             CustomTextFormAuth(
               hintText: 'Enter Your Email',
               labelText: 'Email',
+              valid: (val) {
+                return validInput(val!, 5, 100, 'email');
+              },
               iconData: Icons.email_outlined,
               textEditingController: controller.email,
             ),

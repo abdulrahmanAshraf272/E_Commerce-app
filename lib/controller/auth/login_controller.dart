@@ -9,15 +9,30 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  bool visiblePassword = false;
+  showPassword() {
+    visiblePassword = !visiblePassword;
+    update();
+  }
+
+  @override
+  login() {
+    var formdata = formstate.currentState;
+    if (formdata!.validate()) {
+      //print('Valid');
+    } else {
+      //print('Not Valid');
+    }
+  }
+
   late TextEditingController emailController;
   late TextEditingController passwordController;
   @override
   goToSignUpScreen() {
-    Get.toNamed(AppRoute.signUp);
+    Get.offNamed(AppRoute.signUp);
+    //Get.delete<LoginControllerImp>();
   }
-
-  @override
-  login() {}
 
   @override
   void onInit() {

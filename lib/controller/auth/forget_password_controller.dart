@@ -15,6 +15,7 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
   @override
   goToVerfiyCodeScreen() {
     Get.offNamed(AppRoute.verifyCode);
+    //Get.delete<ForgetPasswordControllerImp>();
   }
 
   @override

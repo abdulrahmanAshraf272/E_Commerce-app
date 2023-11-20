@@ -15,6 +15,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
   @override
   goToResetPasswordScreen() {
     Get.offNamed(AppRoute.resetPassword);
+    //Get.delete<VerifyCodeControllerImp>();
   }
 
   @override
