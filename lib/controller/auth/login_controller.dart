@@ -1,4 +1,7 @@
+import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
+import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
+import 'package:ecommerce_app/data/datasource/remote/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,25 +12,50 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
-  bool visiblePassword = false;
+  LoginData loginData = LoginData(Get.find());
+
+  StatusRequest statusRequest = StatusRequest.none;
+  bool passwordVisible = true;
+
   showPassword() {
-    visiblePassword = !visiblePassword;
+    passwordVisible = !passwordVisible;
     update();
   }
 
   @override
-  login() {
+  login() async {
     var formdata = formstate.currentState;
     if (formdata!.validate()) {
-      //print('Valid');
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await loginData.postData(
+          emailController.text, passwordController.text);
+      statusRequest = handlingData(response);
+      print(statusRequest);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          print('Response ===== ${response['status']}');
+          Get.offNamed(
+            AppRoute.home,
+          );
+        } else {
+          Get.defaultDialog(
+              title: "Warning",
+              middleText: "the email or password is not correct!");
+          statusRequest = StatusRequest.failure;
+        }
+      }
+
+      update();
     } else {
       //print('Not Valid');
     }
   }
 
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
   @override
   goToSignUpScreen() {
     Get.offNamed(AppRoute.signUp);
@@ -50,6 +78,6 @@ class LoginControllerImp extends LoginController {
 
   @override
   goToForgetPassword() {
-    Get.toNamed(AppRoute.forgetPassword);
+    Get.toNamed(AppRoute.checkEmail);
   }
 }

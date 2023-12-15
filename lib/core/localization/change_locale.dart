@@ -3,7 +3,6 @@ import 'package:ecommerce_app/core/services/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LocaleController extends GetxController {
   Locale? language;

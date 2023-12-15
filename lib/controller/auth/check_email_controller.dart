@@ -1,30 +1,29 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
-import 'package:ecommerce_app/data/datasource/remote/forget_password/verifycode_data.dart';
+import 'package:ecommerce_app/data/datasource/remote/forget_password/check_email_data.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class VerifyCodeController extends GetxController {
-  checkCode();
-  goToResetPasswordScreen();
+abstract class CheckEmailController extends GetxController {
+  Future<bool> checkEmail();
+  goToVerfiyCodeScreen();
 }
 
-class VerifyCodeControllerImp extends VerifyCodeController {
-  late String verifyCode;
-  String? email;
-
-  VerifyCodeData verifycodeData = VerifyCodeData(Get.find());
+class CheckEmailControllerImp extends CheckEmailController {
+  late TextEditingController email;
+  CheckEmailData checkEmailData = CheckEmailData(Get.find());
 
   StatusRequest statusRequest = StatusRequest.none;
 
   @override
-  checkCode() async {
+  Future<bool> checkEmail() async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await verifycodeData.postData(email!, verifyCode);
+    var response = await checkEmailData.postData(email.text);
     statusRequest = handlingData(response);
-    print(statusRequest);
 
+    print(statusRequest);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
         print('Response ===== ${response['status']}');
@@ -32,7 +31,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
         return true;
       } else {
         Get.defaultDialog(
-            title: "Warning", middleText: "Verify Code Is Not Correct!");
+            title: "Warning", middleText: "the email is not correct!");
         statusRequest = StatusRequest.failure;
         update();
         return false;
@@ -46,20 +45,21 @@ class VerifyCodeControllerImp extends VerifyCodeController {
   }
 
   @override
-  goToResetPasswordScreen() async {
-    if (await checkCode()) {
-      Get.offNamed(AppRoute.resetPassword, arguments: {"email": email});
+  goToVerfiyCodeScreen() async {
+    if (await checkEmail()) {
+      Get.offNamed(AppRoute.verifyCode, arguments: {"email": email.text});
     }
   }
 
   @override
   void onInit() {
     super.onInit();
-    email = Get.arguments['email'];
+    email = TextEditingController();
   }
 
   @override
   void dispose() {
     super.dispose();
+    email.dispose();
   }
 }
