@@ -9,8 +9,10 @@ import 'package:ecommerce_app/view/screen/auth/forget_password/verify_code.dart'
 import 'package:ecommerce_app/view/screen/auth/success_signup.dart';
 import 'package:ecommerce_app/view/screen/auth/verifycode_signup.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
+import 'package:ecommerce_app/view/screen/homescreen_parent.dart';
 import 'package:ecommerce_app/view/screen/language.dart';
 import 'package:ecommerce_app/view/screen/onboarding.dart';
+import 'package:ecommerce_app/view/screen/product_details.dart';
 import 'package:ecommerce_app/view/test_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,5 +33,6 @@ List<GetPage> routes = [
   GetPage(name: AppRoute.successSignUp, page: () => const SuccessSignUp()),
   GetPage(
       name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
-  GetPage(name: AppRoute.home, page: () => const HomeScreen())
+  GetPage(name: AppRoute.home, page: () => const HomeScreenParent()),
+  GetPage(name: AppRoute.productDetails, page: () => const ProductDetails())
 ];

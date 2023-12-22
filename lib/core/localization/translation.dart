@@ -4,6 +4,16 @@ class MyTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'ar': {
+          'Buy Now': 'شراء الان',
+          'Add to card': 'اضافة الى السلة',
+          'Product Info': 'خصائص المنتج',
+          'View All': 'عرض الكل',
+          'Home': 'الرئيسية',
+          'Settings': 'الاعدادات',
+          'Profile': 'الشخصية',
+          'Favorate': 'المفضلة',
+          'Search': 'بحث',
+          'Categories': 'الاقسام',
           'Choose Language': 'اختر اللغة',
           'Arabic': 'عربية',
           'English': 'انجليزية',
@@ -22,6 +32,16 @@ class MyTranslation extends Translations {
               'يتم تسليم المنتج الخاص بك إلى \nمنزلك بأمان وأمان',
         },
         'en': {
+          'Buy Now': 'Buy Now',
+          'Add to card': 'Add to card',
+          'Product Info': 'Product Info',
+          'View All': 'View all',
+          'Home': 'Home',
+          'Settings': 'Settings',
+          'Profile': 'Profile',
+          'Favorate': 'Favorate',
+          'Search': 'Search',
+          'Categories': 'Categories',
           'Choose Language': 'Choose Language',
           'Arabic': 'Arabic',
           'English': 'English',

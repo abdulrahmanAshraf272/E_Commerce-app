@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
+import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/auth/login.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +23,8 @@ class LoginControllerImp extends LoginController {
   StatusRequest statusRequest = StatusRequest.none;
   bool passwordVisible = true;
 
+  MyServices myServices = Get.find();
+
   showPassword() {
     passwordVisible = !passwordVisible;
     update();
@@ -38,10 +42,16 @@ class LoginControllerImp extends LoginController {
       print(statusRequest);
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == 'success') {
-          print('Response ===== ${response['status']}');
-          Get.offNamed(
-            AppRoute.home,
-          );
+          myServices.sharedPreferences
+              .setString("id", response['data']['users_id'].toString());
+          myServices.sharedPreferences
+              .setString("username", response['data']['users_name']);
+          myServices.sharedPreferences
+              .setString("email", response['data']['users_email']);
+          myServices.sharedPreferences
+              .setString("phone", response['data']['users_phone']);
+          myServices.sharedPreferences.setString("step", "2");
+          Get.offNamed(AppRoute.home);
         } else {
           Get.defaultDialog(
               title: "Warning",
@@ -67,6 +77,11 @@ class LoginControllerImp extends LoginController {
     super.onInit();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+
+    FirebaseMessaging.instance.getToken().then((value) {
+      print(value);
+      String? token = value;
+    });
   }
 
   @override

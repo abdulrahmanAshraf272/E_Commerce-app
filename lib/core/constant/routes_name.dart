@@ -10,4 +10,5 @@ class AppRoute {
   static const String successSignUp = '/successSignUp';
   static const String checkPhoneNumber = '/checkPhoneNumber';
   static const String verifyCodeSignUp = '/verifyCodeSignUp';
+  static const String productDetails = '/productDetails';
 }
