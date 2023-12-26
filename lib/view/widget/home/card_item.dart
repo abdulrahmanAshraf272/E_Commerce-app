@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/home_controller.dart';
 import 'package:ecommerce_app/core/functions/translate_database.dart';
 import 'package:ecommerce_app/data/model/items_model.dart';
@@ -9,7 +10,10 @@ import 'package:get/get.dart';
 
 class CardItem extends StatelessWidget {
   final ItemsModel item;
-  const CardItem({super.key, required this.item});
+  const CardItem({
+    super.key,
+    required this.item,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +95,21 @@ class CardItem extends StatelessWidget {
                               ],
                             ),
                             const Spacer(),
-                            Image.asset('assets/images/card_orange_icon.png')
+                            //Image.asset('assets/images/card_orange_icon.png')
+                            GetBuilder<FavoriteController>(
+                                builder: (controller) => IconButton(
+                                      onPressed: () {
+                                        controller
+                                            .changeFavState(item.itemsId!);
+                                      },
+                                      icon: controller
+                                                  .isFavorite[item.itemsId] ==
+                                              1
+                                          ? Icon(Icons.favorite)
+                                          : Icon(
+                                              Icons.favorite_border_outlined),
+                                      color: Colors.orange,
+                                    ))
                           ],
                         )
                       ],

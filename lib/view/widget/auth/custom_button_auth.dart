@@ -16,7 +16,7 @@ class CustomButtonAuth extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: MaterialButton(
-            color: AppColor.primaryColor,
+            color: AppColor.orange,
             textColor: Colors.white,
             onPressed: onPressed,
             child: Text(textButton,

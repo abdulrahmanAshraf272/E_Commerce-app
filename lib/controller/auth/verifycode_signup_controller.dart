@@ -35,6 +35,11 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
     }
   }
 
+  resendVerifycode() {
+    verifycodeSignup.resendVerifycode(email!);
+    Get.snackbar('Resend Done!', 'go check your email.');
+  }
+
   @override
   void onInit() {
     super.onInit();

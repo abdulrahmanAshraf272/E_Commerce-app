@@ -15,9 +15,8 @@ class GoToSignUpButton extends StatelessWidget {
             style: TextStyle(color: Colors.black.withOpacity(0.5))),
         TextButton(
             onPressed: onPress,
-            child: const Text(
-              "Sign Up",
-            ))
+            child:
+                const Text("Sign Up", style: TextStyle(color: Colors.orange)))
       ],
     );
   }

@@ -12,6 +12,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeControllerImp());
+
     return GetBuilder<HomeControllerImp>(
         builder: (controller) => SizedBox(
               height: 45,
@@ -40,7 +41,8 @@ class CategoriesListItem extends StatelessWidget {
     Get.put(HomeControllerImp());
     return GetBuilder<HomeControllerImp>(
       builder: (controller) => GestureDetector(
-        onTap: () {
+        onTap: () async {
+          //await controller.getData();
           controller.selectCategorieItem(index);
           controller.makeListOfItems(categoriesModel.categoriesId!);
         },

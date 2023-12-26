@@ -60,6 +60,14 @@ class VerifyCodeSignUp extends StatelessWidget {
                           //     });
                         },
                       ),
+                      const SizedBox(height: 30),
+                      TextButton(
+                          onPressed: () {
+                            controller.resendVerifycode();
+                          },
+                          child: const Text('Resend Code',
+                              style: TextStyle(
+                                  color: Colors.orange, fontSize: 18)))
                     ],
                   ),
                 ),

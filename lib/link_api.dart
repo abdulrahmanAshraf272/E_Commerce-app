@@ -8,7 +8,7 @@ class AppLink {
   static const String imagesItems = '$images/items';
 //==========---============================-//
 
-  //=============== Auth ===============//
+//=============== Auth ===============//
   static const String signUp = '$server/auth/signup.php';
   static const String verifycode = '$server/auth/verifycode.php';
   static const String login = '$server/auth/login.php';
@@ -17,7 +17,13 @@ class AppLink {
       '$server/forget_password/verifycode.php';
   static const String resetPassword =
       '$server/forget_password/reset_password.php';
+  static const String resend = '$server/auth/resend.php';
 //====================================//
 
   static const String home = '$server/home.php';
+
+//======== Favorite ========//
+  static const String favoriteAdd = '$server/favorite/add.php';
+  static const String favoriteRemove = '$server/favorite/remove.php';
+  static const String favoriteView = '$server/favorite/view.php';
 }

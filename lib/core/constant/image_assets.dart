@@ -5,5 +5,5 @@ class AppImageAssets {
   static const String onBoardingImageTwo = '$rootImage/onboarding2.jpg';
   static const String onBoardingImageThree = '$rootImage/onboarding3.jpg';
 
-  static const String logoImage = '$rootImage/app_logo.png';
+  static const String logoImage = '$rootImage/logonew.png';
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/home_controller.dart';
 import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
@@ -59,7 +60,13 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 20, right: 20, bottom: 20, top: 10),
                     itemBuilder: (context, index) {
-                      return CardItem(item: controller.itemsToDisplay[index]);
+                      // == add favorite from data came from database to favorite controller var (local)
+                      // favoriteController
+                      //         .isFavorite[controller.itemsDart[index].itemsId] =
+                      //     controller.itemsDart[index].favorite;
+                      return CardItem(
+                        item: controller.itemsToDisplay[index],
+                      );
                     }),
               ),
             )

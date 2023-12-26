@@ -1,4 +1,5 @@
 import 'package:dartz/dartz_unsafe.dart';
+import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
@@ -17,9 +18,11 @@ abstract class HomeController extends GetxController {
 class HomeControllerImp extends HomeController {
   TextEditingController searchController = TextEditingController();
   MyServices myServices = Get.find();
+  final favController = Get.put(FavoriteController());
   String? lang;
   String? username;
-  String? id;
+  String? idString;
+  late int id;
   HomeData homeData = HomeData(Get.find());
   late StatusRequest statusRequest;
   int selectedIndex = 0;
@@ -29,6 +32,12 @@ class HomeControllerImp extends HomeController {
   List<ItemsModel> itemsDart = [];
   List itemsToDisplay = [];
 
+  saveFavInLocal() {
+    itemsDart.forEach((item) {
+      favController.isFavorite[item.itemsId] = item.favorite;
+    });
+  }
+
   selectCategorieItem(int index) {
     selectedIndex = index;
     update();
@@ -37,13 +46,18 @@ class HomeControllerImp extends HomeController {
   @override
   initialData() {
     username = myServices.sharedPreferences.getString("username") ?? "no name";
-    id = myServices.sharedPreferences.getString("id") ?? "0";
+    idString = myServices.sharedPreferences.getString("id") ?? "0";
+    id = int.parse(idString!);
   }
 
   @override
   getData() async {
+    categoriesJson.clear();
+    categoriesDart.clear();
+    itemsJson.clear();
+    itemsDart.clear();
     statusRequest = StatusRequest.loading;
-    var response = await homeData.getData();
+    var response = await homeData.getData(idString!);
     statusRequest = handlingData(response);
 
     if (statusRequest == StatusRequest.success) {
@@ -53,17 +67,15 @@ class HomeControllerImp extends HomeController {
             categoriesJson.map((e) => CategoriesModel.fromJson(e)).toList();
 
         itemsJson.addAll(response['items']);
-
         itemsDart = itemsJson.map((e) => ItemsModel.fromJson(e)).toList();
-
         makeListOfItems(categoriesDart[0].categoriesId!);
-        print('Response ===== ${response['status']}');
-        print('categories list $categoriesDart');
-        print('items list $itemsDart');
+
+        saveFavInLocal();
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
+
     update();
   }
 
@@ -83,16 +95,19 @@ class HomeControllerImp extends HomeController {
   }
 
   goToProductDetailsScreen(ItemsModel item) {
-    Get.toNamed(AppRoute.productDetails, arguments: {"item": item});
+    Get.toNamed(
+      AppRoute.productDetails,
+      arguments: {"item": item},
+    );
   }
 
   @override
   void onInit() {
+    initialData();
     lang = myServices.sharedPreferences.getString('lang') ?? 'en';
-
-    print(lang);
-    //print(categoriesDart[0].categoriesNameAr);
+    print('hello');
     getData();
+    //saveFavInLocal();
     super.onInit();
   }
 

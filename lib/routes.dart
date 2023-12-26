@@ -11,6 +11,7 @@ import 'package:ecommerce_app/view/screen/auth/verifycode_signup.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/screen/homescreen_parent.dart';
 import 'package:ecommerce_app/view/screen/language.dart';
+import 'package:ecommerce_app/view/screen/my_favorite.dart';
 import 'package:ecommerce_app/view/screen/onboarding.dart';
 import 'package:ecommerce_app/view/screen/product_details.dart';
 import 'package:ecommerce_app/view/test_view.dart';
@@ -19,8 +20,7 @@ import 'package:get/get.dart';
 
 List<GetPage> routes = [
   //GetPage(name: '/', page: () => const TestView()),
-  GetPage(
-      name: '/', page: () => const Language(), middlewares: [MyMiddleware()]),
+  GetPage(name: '/', page: () => const Language(), middlewares: []),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.onBoarding, page: () => const OnBoarding()),
   GetPage(name: AppRoute.signUp, page: () => const SignUp()),
@@ -34,5 +34,6 @@ List<GetPage> routes = [
   GetPage(
       name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
   GetPage(name: AppRoute.home, page: () => const HomeScreenParent()),
-  GetPage(name: AppRoute.productDetails, page: () => const ProductDetails())
+  GetPage(name: AppRoute.productDetails, page: () => const ProductDetails()),
+  GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite())
 ];

@@ -18,4 +18,16 @@ class VerifycodeSignup {
     });
     //returnresponse.fold((l) => l, (r) => r);
   }
+
+  resendVerifycode(String email) async {
+    var response = await crud.postData(AppLink.resend, {"email": email});
+
+    print('=========== done');
+
+    return response.fold((leftValue) {
+      return leftValue;
+    }, (rightValue) {
+      return rightValue;
+    });
+  }
 }
