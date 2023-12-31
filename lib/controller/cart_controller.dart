@@ -1,12 +1,9 @@
-import 'package:dartz/dartz_streaming.dart';
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/cart_data.dart';
 import 'package:ecommerce_app/data/model/cart_model.dart';
-import 'package:ecommerce_app/test.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 
 class CartController extends GetxController {
   late String userid;
@@ -105,7 +102,6 @@ class CartController extends GetxController {
   }
 
   increaseAmountInCartPage(int index) {
-    // int amount = cartModel.itemCount!;
     cartAdd(cart[index].itemId.toString(), '1', false);
     totalPrice += cart[index].itemPrice!;
     cart[index].countItems = cart[index].countItems! + 1;

@@ -1,9 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_app/controller/favorite_controller.dart';
-import 'package:ecommerce_app/controller/home_controller.dart';
 import 'package:ecommerce_app/controller/my_favorite_controller.dart';
 import 'package:ecommerce_app/core/functions/translate_database.dart';
-import 'package:ecommerce_app/data/model/items_model.dart';
 import 'package:ecommerce_app/data/model/my_favorite_model.dart';
 import 'package:ecommerce_app/link_api.dart';
 import 'package:ecommerce_app/view/widget/home/rate.dart';

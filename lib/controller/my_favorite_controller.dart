@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
 import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/data/datasource/remote/favorite_data.dart';
 import 'package:ecommerce_app/data/datasource/remote/my_favorite_data.dart';
 import 'package:ecommerce_app/data/model/my_favorite_model.dart';
 import 'package:get/get.dart';

@@ -1,9 +1,6 @@
-import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/home_controller.dart';
 import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/constant/app_colors.dart';
-import 'package:ecommerce_app/data/model/categories_model.dart';
-import 'package:ecommerce_app/link_api.dart';
+
 import 'package:ecommerce_app/view/widget/home/card_item.dart';
 import 'package:ecommerce_app/view/widget/home/categories.dart';
 import 'package:ecommerce_app/view/widget/home/categories_title_and_viewall.dart';

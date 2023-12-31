@@ -2,7 +2,6 @@ import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/core/functions/handling_data_controller.dart';
 import 'package:ecommerce_app/data/datasource/remote/auth/verifycode_signup.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class VerifyCodeSignUpController extends GetxController {

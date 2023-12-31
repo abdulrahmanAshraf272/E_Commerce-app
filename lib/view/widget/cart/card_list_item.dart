@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/controller/cart_controller.dart';
-import 'package:ecommerce_app/data/model/cart_model.dart';
 import 'package:ecommerce_app/link_api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

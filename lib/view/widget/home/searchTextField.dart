@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/controller/home_controller.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
-import 'package:ecommerce_app/core/functions/translate_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

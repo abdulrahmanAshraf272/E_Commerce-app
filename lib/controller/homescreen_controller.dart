@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/screen/settings.dart';
 import 'package:get/get.dart';

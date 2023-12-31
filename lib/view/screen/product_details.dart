@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_app/controller/product_details_controller.dart';
 import 'package:ecommerce_app/core/functions/translate_database.dart';
 import 'package:ecommerce_app/link_api.dart';

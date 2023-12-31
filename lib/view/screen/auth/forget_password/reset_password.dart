@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/controller/auth/reset_password_controller.dart';
 import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
 import 'package:ecommerce_app/core/functions/valid_input.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_button_auth.dart';

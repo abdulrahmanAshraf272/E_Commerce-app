@@ -2,7 +2,6 @@ import 'package:ecommerce_app/controller/cart_controller.dart';
 import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/view/widget/cart/card_list_item.dart';
 import 'package:ecommerce_app/view/widget/cart/custom_bottom_nav_bar.dart';
-import 'package:ecommerce_app/view/widget/cart/custom_button_order.dart';
 import 'package:ecommerce_app/view/widget/cart/top_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,12 +1,7 @@
-import 'package:ecommerce_app/controller/auth/check_email_controller.dart';
-import 'package:ecommerce_app/controller/auth/verify_code_controller.dart';
 import 'package:ecommerce_app/controller/auth/verifycode_signup_controller.dart';
 import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/constant/app_colors.dart';
-import 'package:ecommerce_app/view/widget/auth/custom_button_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_body_auth.dart';
-import 'package:ecommerce_app/view/widget/auth/custom_textform_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_title_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
