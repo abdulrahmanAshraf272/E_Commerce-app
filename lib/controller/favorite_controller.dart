@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class FavoriteController extends GetxController {
   late String userid;
   FavoriteData favoriteData = FavoriteData(Get.find());
-  late StatusRequest statusRequest;
+  late StatusRequest statusRequest = StatusRequest.loading;
   MyServices myServices = Get.find();
 
   Map isFavorite = {};

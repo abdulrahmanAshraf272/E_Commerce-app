@@ -12,4 +12,6 @@ class AppRoute {
   static const String verifyCodeSignUp = '/verifyCodeSignUp';
   static const String productDetails = '/productDetails';
   static const String myFavorite = '/myFavorite';
+  static const String settings = '/settings';
+  static const String cart = '/cart';
 }

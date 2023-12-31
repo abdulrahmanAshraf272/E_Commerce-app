@@ -9,10 +9,11 @@ Future<bool> alertExitApp() {
       middleText: 'do you want to exit app',
       actions: [
         ElevatedButton(
-            onPressed: () {
-              exit(0);
-            },
-            child: const Text('yes')),
+          onPressed: () {
+            exit(0);
+          },
+          child: const Text('yes'),
+        ),
         ElevatedButton(
             onPressed: () {
               Get.back();

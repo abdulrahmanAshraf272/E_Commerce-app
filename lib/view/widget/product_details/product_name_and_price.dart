@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ProductNameAndPrice extends StatelessWidget {
   final String productName;
-  final int productPrice;
+  final productPrice;
   const ProductNameAndPrice(
       {super.key, required this.productName, required this.productPrice});
 

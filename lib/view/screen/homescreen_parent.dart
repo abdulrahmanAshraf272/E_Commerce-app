@@ -1,4 +1,6 @@
 import 'package:ecommerce_app/controller/homescreen_controller.dart';
+import 'package:ecommerce_app/core/functions/alert_exit_app.dart';
+import 'package:ecommerce_app/view/screen/cart.dart';
 import 'package:ecommerce_app/view/widget/home_parent/custom_bottomappbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,15 +14,20 @@ class HomeScreenParent extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(
       builder: (controller) => Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => const Cart());
+          },
+          backgroundColor: Colors.orange,
           child: const Icon(
             Icons.shopping_bag_outlined,
           ),
-          backgroundColor: Colors.orange,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: CustomBottomAppBar(),
-        body: controller.listPage.elementAt(controller.currentPage),
+        bottomNavigationBar: const CustomBottomAppBar(),
+        body: WillPopScope(
+          onWillPop: alertExitApp,
+          child: controller.listPage.elementAt(controller.currentPage),
+        ),
       ),
     );
   }

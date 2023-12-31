@@ -49,8 +49,6 @@ class ItemsModel {
     itemsImage = json['items_image'];
     itemsCount = json['items_count'];
     itemsActive = json['items_active'];
-    //print('the type');
-    print(json['items_price'].runtimeType);
     itemsPrice = json['items_price'];
     itemsDiscount = json['items_discount'];
     itemsDate = json['items_date'];

@@ -19,7 +19,10 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    final controller = Get.put(ProductDetailsControllerImp());
+    final controller = Get.put(
+      ProductDetailsControllerImp(),
+    );
+
     return Scaffold(
       backgroundColor: const Color(0xffF4F4F4),
       body: SafeArea(
@@ -51,12 +54,14 @@ class ProductDetails extends StatelessWidget {
                                 controller.item.categoriesName!),
                           ),
                           const SizedBox(height: 12),
-                          ProductNameAndPrice(
-                            productName: translateDatabase(
-                                controller.item.itemsNameAr!,
-                                controller.item.itemsName!),
-                            productPrice: controller.item.itemsPrice!,
-                          ),
+                          GetBuilder<ProductDetailsControllerImp>(
+                              builder: ((controller) => ProductNameAndPrice(
+                                    productName: translateDatabase(
+                                        controller.item.itemsNameAr!,
+                                        controller.item.itemsName!),
+                                    productPrice: controller.item.itemsPrice! *
+                                        controller.getNumberOfProdut(),
+                                  ))),
                           const SizedBox(height: 12),
                           const Row(
                             children: [
@@ -77,9 +82,13 @@ class ProductDetails extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Expanded(child: AddToCardButton(onPress: () {})),
+                      Expanded(child: AddToCardButton(onPress: () {
+                        controller.addToCard();
+                      })),
                       const SizedBox(width: 10),
-                      BuyButton(onPress: () {})
+                      BuyButton(onPress: () {
+                        controller.buyNow();
+                      })
                     ],
                   )
                 ],

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
+import 'package:ecommerce_app/view/screen/settings.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +13,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currentPage = 0;
   List<Widget> listPage = [
     const HomeScreen(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text('Settings'))],
-    ),
+    const SettingsPage(),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text('Profile'))],
