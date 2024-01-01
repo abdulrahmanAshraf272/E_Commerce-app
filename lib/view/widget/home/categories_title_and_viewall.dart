@@ -6,20 +6,23 @@ class CategoriesTitleAndViewAll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          'Categories'.tr,
-          style: const TextStyle(fontSize: 16),
-        ),
-        const Spacer(),
-        TextButton(
-            onPressed: () {},
-            child: Text(
-              'View All'.tr,
-              style: const TextStyle(fontSize: 12, color: Colors.orange),
-            ))
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Text(
+            'Categories'.tr,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const Spacer(),
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                'View All'.tr,
+                style: const TextStyle(fontSize: 12, color: Colors.orange),
+              ))
+        ],
+      ),
     );
   }
 }

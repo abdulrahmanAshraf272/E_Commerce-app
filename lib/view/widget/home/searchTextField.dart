@@ -10,7 +10,7 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeControllerImp());
+    Get.put(HomeControllerImp());
     return Row(
       children: [
         Expanded(
@@ -19,15 +19,28 @@ class SearchTextField extends StatelessWidget {
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(30)),
             child: Center(
-              child: TextField(
-                controller: controller.searchController,
-                cursorColor: Colors.grey,
-                onChanged: controller.searchOnChange,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Search'.tr,
-                    prefixIcon: Icon(Icons.search),
-                    prefixIconColor: Colors.grey),
+              child: GetBuilder<HomeControllerImp>(
+                builder: (controller) => TextField(
+                  controller: controller.searchController,
+                  cursorColor: Colors.grey,
+                  onChanged: controller.searchOnChange,
+                  decoration: controller.isSearching
+                      ? InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Search'.tr,
+                          prefixIcon: const Icon(Icons.search),
+                          prefixIconColor: Colors.grey,
+                          suffixIcon: IconButton(
+                            onPressed: () => controller.clearTextField(),
+                            icon: const Icon(Icons.close),
+                          ))
+                      : InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Search'.tr,
+                          prefixIcon: const Icon(Icons.search),
+                          prefixIconColor: Colors.grey,
+                        ),
+                ),
               ),
             ),
           ),

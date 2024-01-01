@@ -29,7 +29,10 @@ class HomeControllerImp extends HomeController {
   List categoriesJson = [];
   List itemsJson = [];
   List<ItemsModel> itemsDart = [];
-  List itemsToDisplay = [];
+  List<ItemsModel> itemsToDisplay = [];
+  List<ItemsModel> searchedList = [];
+
+  bool isSearching = false;
 
   saveFavInLocal() {
     itemsDart.forEach((item) {
@@ -89,8 +92,40 @@ class HomeControllerImp extends HomeController {
   }
 
   searchOnChange(String value) {
-    if (itemsDart.contains(value)) {}
-    //TODO: add the process of search of the product.
+    if (value.isNotEmpty) {
+      //Performance: to not rebuild in every litter .
+      if (isSearching == false) {
+        isSearching = true;
+        update();
+      }
+
+      searchedList = itemsDart
+          .where((element) =>
+              element.itemsName!.startsWith(value) ||
+              element.itemsNameAr!.startsWith(value))
+          .toList();
+      if (searchedList.isEmpty) {
+        searchedList = itemsDart
+            .where((element) =>
+                element.itemsName!.contains(value) ||
+                element.itemsNameAr!.contains(value))
+            .toList();
+      }
+      update();
+    } else {
+      if (isSearching == true) {
+        isSearching = false;
+        update();
+      }
+      searchedList = [];
+    }
+  }
+
+  clearTextField() {
+    searchController.clear();
+    isSearching = false;
+    searchedList = [];
+    update();
   }
 
   goToProductDetailsScreen(ItemsModel item) {

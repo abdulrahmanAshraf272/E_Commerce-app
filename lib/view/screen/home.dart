@@ -16,60 +16,77 @@ class HomeScreen extends StatelessWidget {
     Get.put(HomeControllerImp());
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
     return GetBuilder<HomeControllerImp>(
-      builder: (controller) => HandlingDataView(
-        statusRequest: controller.statusRequest,
-        widget: Column(
-          children: [
-            Image.asset(
-              'assets/images/headphone_image1.png',
-              fit: BoxFit.cover,
-              width: screenWidth,
-              height: screenHeight * 0.35,
-            ),
-            const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  SearchTextField(),
-                  SizedBox(height: 20),
-                  CategoriesTitleAndViewAll(),
-                  SizedBox(height: 8),
-                ],
+      builder: (controller) {
+        return HandlingDataView(
+          statusRequest: controller.statusRequest,
+          widget: Column(
+            children: [
+              Image.asset(
+                'assets/images/headphone_image1.png',
+                fit: BoxFit.cover,
+                width: screenWidth,
+                height: screenHeight * 0.35,
               ),
-            ),
-            const Categories(),
-            const SizedBox(height: 10),
-            Expanded(
-              child: SingleChildScrollView(
-                child: GridView.builder(
-                    itemCount: controller.itemsToDisplay.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.67,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 30,
-                    ),
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 20, bottom: 20, top: 10),
-                    itemBuilder: (context, index) {
-                      // == add favorite from data came from database to favorite controller var (local)
-                      // favoriteController
-                      //         .isFavorite[controller.itemsDart[index].itemsId] =
-                      //     controller.itemsDart[index].favorite;
-                      return CardItem(
-                        item: controller.itemsToDisplay[index],
-                      );
-                    }),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    SearchTextField(),
+                    SizedBox(height: 20),
+                  ],
+                ),
               ),
-            )
-          ],
-        ),
-      ),
+              controller.isSearching == false
+                  ? const Column(
+                      children: [
+                        CategoriesTitleAndViewAll(),
+                        SizedBox(height: 8),
+                        Categories(),
+                        SizedBox(height: 10),
+                      ],
+                    )
+                  : const SizedBox(),
+              controller.isSearching == true && controller.searchedList.isEmpty
+                  ? const Center(
+                      child: Text('No items'),
+                    )
+                  : Expanded(
+                      child: SingleChildScrollView(
+                        child: GridView.builder(
+                            itemCount: controller.isSearching
+                                ? controller.searchedList.length
+                                : controller.itemsToDisplay.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 0.67,
+                              crossAxisSpacing: 20,
+                              mainAxisSpacing: 30,
+                            ),
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 20, bottom: 20, top: 10),
+                            itemBuilder: (context, index) {
+                              // == add favorite from data came from database to favorite controller var (local)
+                              // favoriteController
+                              //         .isFavorite[controller.itemsDart[index].itemsId] =
+                              //     controller.itemsDart[index].favorite;
+                              return CardItem(
+                                item: controller.isSearching
+                                    ? controller.searchedList[index]
+                                    : controller.itemsToDisplay[index],
+                              );
+                            }),
+                      ),
+                    )
+            ],
+          ),
+        );
+      },
     );
   }
 }

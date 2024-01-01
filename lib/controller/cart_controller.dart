@@ -110,4 +110,10 @@ class CartController extends GetxController {
     priceOfTotalItems += priceOfOneItem;
     cart[index].itemsPrice = priceOfTotalItems.toString();
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+    cartView();
+  }
 }
