@@ -23,12 +23,27 @@ class CardListItem extends StatelessWidget {
             Expanded(
                 flex: 3,
                 child: ListTile(
-                  title: Text('${controller.cart[index].itemName}'),
-                  subtitle: Text(
-                    r'$' + '${controller.cart[index].itemsPrice}',
-                    style: const TextStyle(color: Colors.orange, fontSize: 16),
-                  ),
-                )),
+                    title: Text('${controller.cart[index].itemName}'),
+                    subtitle: RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                          text:
+                              '\$${(controller.cart[index].itemPrice! - controller.cart[index].itemDiscount!) * controller.cart[index].countItems!} ',
+                          style: const TextStyle(
+                              color: Colors.orange, fontSize: 16),
+                        ),
+                        controller.cart[index].itemDiscount != 0
+                            ? TextSpan(
+                                text:
+                                    '\$${(controller.cart[index].itemPrice! * controller.cart[index].countItems!)}',
+                                style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 13,
+                                    decoration: TextDecoration.lineThrough),
+                              )
+                            : TextSpan()
+                      ]),
+                    ))),
             Expanded(
                 child: Column(
               children: [

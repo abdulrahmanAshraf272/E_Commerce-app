@@ -2,8 +2,11 @@ import 'package:ecommerce_app/core/constant/app_colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData themeEnglish = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-    primarySwatch: Colors.blue,
+    appBarTheme: AppBarTheme(color: Colors.orange),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: Colors.orange),
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+    primarySwatch: Colors.orange,
     fontFamily: 'Cairo',
     textTheme: const TextTheme(
         displayLarge: TextStyle(

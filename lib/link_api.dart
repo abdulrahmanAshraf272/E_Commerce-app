@@ -28,4 +28,18 @@ class AppLink {
   static const String cartView = '$server/cart/view.php';
   static const String cartAdd = '$server/cart/add.php';
   static const String cartDelete = '$server/cart/delete.php';
+
+//======= Address =======/
+  static const String addressView = '$server/address/view.php';
+  static const String addressAdd = '$server/address/add.php';
+  static const String addressDelete = '$server/address/delete.php';
+  static const String addressEdit = '$server/address/edit.php';
+
+//========= Copoun ======/
+  static const String copounCheck = '$server/coupon/valid_check.php';
+  static const String couponCounter = '$server/coupon/coupon_counter.php';
+
+//======== Orders =======/
+  static const String checkout = '$server/orders/checkout.php';
+  static const String allOrders = '$server/orders/all_orders.php';
 }

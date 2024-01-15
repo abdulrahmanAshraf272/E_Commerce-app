@@ -60,6 +60,8 @@ class ProductDetails extends StatelessWidget {
                                         controller.item.itemsName!),
                                     productPrice: controller.item.itemsPrice! *
                                         controller.getNumberOfProdut(),
+                                    discount: controller.item.itemsDiscount! *
+                                        controller.getNumberOfProdut(),
                                   ))),
                           const SizedBox(height: 12),
                           const Row(

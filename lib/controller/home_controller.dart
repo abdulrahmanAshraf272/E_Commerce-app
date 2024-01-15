@@ -14,7 +14,7 @@ abstract class HomeController extends GetxController {
   getData();
 }
 
-class HomeControllerImp extends HomeController {
+class HomeControllerImp extends HomeController with WidgetsBindingObserver {
   TextEditingController searchController = TextEditingController();
   MyServices myServices = Get.find();
   final favController = Get.put(FavoriteController());
@@ -23,7 +23,7 @@ class HomeControllerImp extends HomeController {
   String? idString;
   late int id;
   HomeData homeData = HomeData(Get.find());
-  late StatusRequest statusRequest;
+  StatusRequest statusRequest = StatusRequest.loading;
   int selectedIndex = 0;
   List<CategoriesModel> categoriesDart = [];
   List categoriesJson = [];
@@ -142,6 +142,7 @@ class HomeControllerImp extends HomeController {
     print('hello');
     getData();
     //saveFavInLocal();
+    WidgetsBinding.instance?.addObserver(this);
     super.onInit();
   }
 
@@ -150,5 +151,24 @@ class HomeControllerImp extends HomeController {
     // TODO: implement dispose
     super.dispose();
     searchController.dispose();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    WidgetsBinding.instance?.removeObserver(this);
+    super.onClose();
+  }
+
+  //To upload the data form the database, if the user not closed the app, kept it in the background , and used it in next day.
+  //TODO: think about it, remove it or keep it.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      print('resumed');
+      update();
+      getData();
+    }
   }
 }

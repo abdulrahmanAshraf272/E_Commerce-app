@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/controller/settings_controller.dart';
+import 'package:ecommerce_app/core/constant/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,15 +47,21 @@ class SettingsPage extends StatelessWidget {
                             print(val);
                           })),
                   ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoute.addressView);
+                      },
                       title: Text('Address'),
-                      trailing: Icon(
-                        Icons.location_city_outlined,
-                      )),
+                      trailing: const Icon(Icons.location_city_outlined)),
+                  ListTile(
+                      onTap: () {
+                        Get.toNamed(AppRoute.orders);
+                      },
+                      title: Text('Orders'),
+                      trailing: const Icon(Icons.shopping_bag_outlined)),
                   ListTile(
                       onTap: () {},
                       title: Text('Contact us'),
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.help_outline_rounded,
                       )),
                   ListTile(

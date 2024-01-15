@@ -25,7 +25,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
 
   //to get how many amount of product do i added to the cart.
 
-  getNumberOfProdut() => _numberOfProdut;
+  int getNumberOfProdut() => _numberOfProdut;
 
   increaseNumberOfProduct() {
     if (_numberOfProdut < 40) {

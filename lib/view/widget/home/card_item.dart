@@ -90,7 +90,19 @@ class CardItem extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                         children: [
                                       const TextSpan(text: r'$'),
-                                      TextSpan(text: '${item.itemsPrice}')
+                                      TextSpan(
+                                          text:
+                                              '${(item.itemsPrice! - item.itemsDiscount!)}'),
+                                      item.itemsDiscount != 0
+                                          ? TextSpan(
+                                              text: ' \$${item.itemsPrice}',
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Colors.grey,
+                                                  decoration: TextDecoration
+                                                      .lineThrough))
+                                          : const TextSpan(),
                                     ]))
                               ],
                             ),
