@@ -42,4 +42,5 @@ class AppLink {
 //======== Orders =======/
   static const String checkout = '$server/orders/checkout.php';
   static const String allOrders = '$server/orders/all_orders.php';
+  static const String orderDetails = '$server/orders/order_details.php';
 }

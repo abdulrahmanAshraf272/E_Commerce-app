@@ -59,10 +59,12 @@ class HomeControllerImp extends HomeController with WidgetsBindingObserver {
     itemsJson.clear();
     itemsDart.clear();
     statusRequest = StatusRequest.loading;
-    var response = await homeData.getData(idString!);
+    var response =
+        await homeData.getData(myServices.sharedPreferences.getString("id")!);
     statusRequest = handlingData(response);
 
     if (statusRequest == StatusRequest.success) {
+      print(response['status']);
       if (response['status'] == 'success') {
         categoriesJson.addAll(response['categories']);
         categoriesDart =
@@ -139,7 +141,6 @@ class HomeControllerImp extends HomeController with WidgetsBindingObserver {
   void onInit() {
     initialData();
     lang = myServices.sharedPreferences.getString('lang') ?? 'en';
-    print('hello');
     getData();
     //saveFavInLocal();
     WidgetsBinding.instance?.addObserver(this);

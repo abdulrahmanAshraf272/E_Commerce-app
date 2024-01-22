@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/controller/order_details_controller.dart';
+import 'package:ecommerce_app/data/model/cart_model.dart';
 import 'package:ecommerce_app/link_api.dart';
 import 'package:ecommerce_app/view/widget/cart/order_price_details.dart';
 import 'package:flutter/material.dart';
@@ -15,46 +16,14 @@ class OrderDetails extends StatelessWidget {
       body: GetBuilder<OrderDetailsController>(
         builder: (controller) => ListView(
           children: [
-            Card(
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: Image.network(
-                          '${AppLink.imagesItems}/iphoneheadphones.png',
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                  Expanded(
-                      flex: 3,
-                      child: ListTile(
-                          title: Text('heaphone'),
-                          subtitle: RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: '\$20',
-                                style: const TextStyle(
-                                    color: Colors.orange, fontSize: 16),
-                              ),
-                              TextSpan(
-                                text: '\$20',
-                                style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 13,
-                                    decoration: TextDecoration.lineThrough),
-                              )
-                            ]),
-                          ))),
-                  Expanded(
-                      child: Column(
-                    children: [
-                      Text("2"),
-                    ],
-                  ))
-                ],
-              ),
+            Column(
+              children: [
+                ...List.generate(controller.cart.length, (index) {
+                  return ProductsListItem(
+                    cartModel: controller.cart[index],
+                  );
+                })
+              ],
             ),
             OrderStatusAndPaymentMethod(
               orderStatus:
@@ -71,6 +40,63 @@ class OrderDetails extends StatelessWidget {
                   couponDiscountPercentage:
                       controller.couponDiscountPercentage),
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProductsListItem extends StatelessWidget {
+  final CartModel cartModel;
+  const ProductsListItem({super.key, required this.cartModel});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
+      child: Card(
+        child: Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Image.network(
+                    '${AppLink.imagesItems}/${cartModel.itemImage}',
+                    fit: BoxFit.cover),
+              ),
+            ),
+            Expanded(
+                flex: 3,
+                child: ListTile(
+                    title: Text('${cartModel.itemName}'),
+                    subtitle: RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                          text:
+                              '\$${(cartModel.itemPrice! - cartModel.itemDiscount!) * cartModel.countItems!} ',
+                          style: const TextStyle(
+                              color: Colors.orange, fontSize: 16),
+                        ),
+                        cartModel.itemDiscount != 0
+                            ? TextSpan(
+                                text:
+                                    '\$${(cartModel.itemPrice! * cartModel.countItems!)}',
+                                style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 13,
+                                    decoration: TextDecoration.lineThrough),
+                              )
+                            : TextSpan()
+                      ]),
+                    ))),
+            Expanded(
+                child: Column(
+              children: [
+                Text("${cartModel.countItems}"),
+              ],
+            ))
           ],
         ),
       ),

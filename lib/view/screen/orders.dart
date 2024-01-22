@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/data/model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jiffy/jiffy.dart';
 
 class Orders extends StatelessWidget {
   const Orders({super.key});
@@ -47,8 +48,17 @@ class OrderListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Order Number: #${order.orderId}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            Row(
+              children: [
+                Text('Order Number: #${order.orderId}',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Spacer(),
+                Text(
+                    '${Jiffy(order.orderDatatime, "yyyy-MM-dd hh:mm:ss").fromNow()}',
+                    style: TextStyle(fontSize: 16, color: Colors.orange)),
+              ],
+            ),
             Divider(),
             Text(
                 'Order Status: ${order.orderStatus == 3 ? 'Complate' : 'Underway'}'),

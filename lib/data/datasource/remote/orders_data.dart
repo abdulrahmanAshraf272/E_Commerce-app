@@ -39,4 +39,15 @@ class OrdersData {
       return rightValue;
     });
   }
+
+  getOrderDetails(String orderid) async {
+    var response = await crud.postData(AppLink.orderDetails, {
+      "orderid": orderid,
+    });
+    return response.fold((leftValue) {
+      return leftValue;
+    }, (rightValue) {
+      return rightValue;
+    });
+  }
 }

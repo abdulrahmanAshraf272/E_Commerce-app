@@ -87,9 +87,10 @@ class CartController extends GetxController {
       if (response['status'] == 'success') {
         print('Cart View ===== ${response['status']}');
         //Parsing operation
-        totalPrice = double.parse(response['count&price']['totalprice']);
+        totalPrice = response['count&price']['totalprice'].toDouble();
         amountOfProduct = int.parse(response['count&price']['totalcount']);
         List responseData = response['data'];
+
         cart.addAll(responseData.map((e) => CartModel.fromJson(e)));
 
         getTotalDiscount();
